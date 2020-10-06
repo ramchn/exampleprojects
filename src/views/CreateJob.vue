@@ -71,12 +71,9 @@ export default {
     createJobForm: function(e) {
       this.errors = []
       if (this.jobname && this.companyname && this.location) {
-        const formData = new FormData()
-        formData.append('JobName', this.jobname)
-        formData.append('CompanyName', this.companyname)
-        formData.append('Location', this.location)
+        const data = {'JobName': this.jobname, 'CompanyName': this.companyname, 'Location': this.location, 'ApplyStatus': 'False'}
         this.$axios
-        .post('http://localhost:8071/jobs', formData)
+        .post('http://localhost:8071/jobs', data)
         .then(response => (this.result = response.data))
         .catch(error => (console.log(error)))
       }

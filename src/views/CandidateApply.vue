@@ -14,8 +14,9 @@ export default {
   },
   created: function () {
     const jobid = this.$route.query.jobid
+    const data = {JobId: jobid, ApplyStatus: 'True'}
     this.$axios
-      .post(`http://localhost:8071/job/${jobid}/apply`)
+      .post(`http://localhost:8071/job/${jobid}/apply`, data)
       .then(response => (this.result = response.data))
       .catch(error => (console.log(error)))
   }
